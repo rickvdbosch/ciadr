@@ -19,14 +19,18 @@ namespace Azure.Configuration.Demos
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-					webBuilder.ConfigureAppConfiguration((webHostBuilderContext, configurationBuilder) =>
-					{
-						// First we build the IConfigurationBuilder to be able to access settings in the
-						// sources already added (appsettings.json).
-						var settings = configurationBuilder.Build();
-						configurationBuilder.AddAzureAppConfiguration(options =>
-						{
-							options.Connect(settings["AppConfigurationConnectionString"]);
+                    webBuilder.ConfigureAppConfiguration((webHostBuilderContext, configurationBuilder) =>
+                    {
+                        // First we build the IConfigurationBuilder to be able to access settings in the
+                        // sources already added (appsettings.json).
+                        var settings = configurationBuilder.Build();
+                        configurationBuilder.AddAzureAppConfiguration(options =>
+                        {
+                            options.Connect(settings["AppConfigurationConnectionString"])
+                                    .ConfigureKeyVault(kv =>
+                                        {
+                                            kv.SetCredential(new DefaultAzureCredential());
+                                        });
                             // Azure App Configuration supports giving settings Labels. This way a setting can have
                             // multiple values, all for different labels. Such a label acts like a tag for settings. 
                             // If you don't specify a label to filter on, you only get values with a null label. As 
@@ -43,7 +47,7 @@ namespace Azure.Configuration.Demos
                             //       .Select(KeyFilter.Any, "Acc")
                             //       .Select(KeyFilter.Any, "Prod");
                         });
-					});
-				});
+                    });
+                });
     }
 }
