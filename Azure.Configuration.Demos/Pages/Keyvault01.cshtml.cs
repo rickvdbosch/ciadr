@@ -14,11 +14,12 @@ namespace Azure.Configuration.Demos
 		{
 			try
 			{
-				var sc = new SecretClient(
-					new Uri("https://ciadr-kv2.vault.azure.net/"), 
-					new DefaultAzureCredential());
-				Secret1 = sc.GetSecret(nameof(Secret1)).Value.Value;
-			}
+                var sc = new SecretClient(
+                    new Uri("https://ciadr-kv2.vault.azure.net/"),
+                    new DefaultAzureCredential());
+                var keyVaultSecret = sc.GetSecret(nameof(Secret1)).Value;
+                Secret1 = keyVaultSecret.Value;
+            }
 			catch (Exception e)
 			{
 				Secret1 = e.Message;
