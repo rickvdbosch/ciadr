@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Azure.Configuration.Demos
 {
-    public class Startup
+	public class Startup
     {
         #region Constructors
 
