@@ -17,14 +17,10 @@ namespace Azure.Configuration.Demos.Pages
 
         #endregion
 
-        #region Constructors
-
         public IndexModel(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-
-        #endregion
 
         public void OnGet()
         {

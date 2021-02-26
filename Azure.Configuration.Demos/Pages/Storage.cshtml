@@ -1,0 +1,9 @@
+﻿@page
+@model Azure.Configuration.Demos.Pages.StorageModel
+@{
+    ViewData["Title"] = "Storage";
+}
+<h1>Here's the description of the next session for you:</h1>
+<div>
+	@Html.Raw(Model.NextSession)
+</div>
