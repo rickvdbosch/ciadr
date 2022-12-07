@@ -1,12 +1,11 @@
-﻿using System;
-
-using Azure.Identity;
+﻿using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Azure.Configuration.Demos
 {
-	public class Keyvault01Model : PageModel
+    public class Keyvault01Model : PageModel
 	{
 		public string Secret1 { get; set; }
 

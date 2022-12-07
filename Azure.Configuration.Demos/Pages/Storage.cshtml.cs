@@ -1,16 +1,11 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
-
 using Azure.Identity;
 using Azure.Storage.Blobs;
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Configuration;
 
 namespace Azure.Configuration.Demos.Pages
 {
-	public class StorageModel : PageModel
+    public class StorageModel : PageModel
     {
 		#region Fields
 

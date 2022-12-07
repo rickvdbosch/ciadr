@@ -1,5 +1,4 @@
 ﻿using Azure.Data.AppConfiguration;
-using Microsoft.Extensions.Configuration;
 
 namespace Azure.Configuration.Demos.Services
 {
