@@ -1,10 +1,5 @@
 using Azure.Identity;
 
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-using Microsoft.Extensions.Hosting;
-
 namespace Azure.Configuration.Demos
 {
     public class Program
@@ -27,6 +22,11 @@ namespace Azure.Configuration.Demos
                         configurationBuilder.AddAzureAppConfiguration(options =>
                         {
                             options.Connect(settings["AppConfigurationConnectionString"])
+                                   //.ConfigureRefresh(refresh =>
+                                   //{
+                                   //     refresh.Register("sentinel", refreshAll: true)
+                                   //             .SetCacheExpiration(new TimeSpan(0, 2, 30));
+                                   //})
                                    .ConfigureKeyVault(kv =>
                                    {
                                        kv.SetCredential(new DefaultAzureCredential());
